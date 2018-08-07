@@ -1,4 +1,4 @@
-# blog
+# private-blog
 simple private blog project which fulfills this given task
 
 Task - Create private blog.
