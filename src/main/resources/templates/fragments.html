@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div align="center" th:fragment="header_template">
+    <div class="inline">
+        <h3 class="pageTitle">Blog page title</h3>
+    </div>
+    <br>
+
+    <div class="inline">
+        <form id="loginForm">
+            <div>
+                <input class="textField" type="text" name="username" placeholder="username" >
+                <input class="textField" type="password" name="password" placeholder="password" >
+            </div>
+
+
+        </form>
+        <button class="buttoon" >Sign In</button><!--type="submit" form="loginForm" value="Submit"-->
+        <button class="buttoon" >Register</button>
+    </div>
+</div>
+
+<div  class="post_block" align="center" th:fragment="post_template">
+    <h5 class="post_title">Title</h5>
+    <p class="post_paragraph" align="center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed libero interdum, ultrices velit non, convallis orci. Maecenas porta elit quam, nec consectetur diam feugiat at. Duis tempus nulla justo. Aliquam quis efficitur mauris, id auctor dui. Cras eleifend, lectus et maximus suscipit, ante ipsum efficitur erat, at posuere nulla elit vitae magna. Nulla tincidunt enim non venenatis fermentum. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum vel quam magna. Donec aliquet egestas euismod. In hac habitasse platea dictumst. Aenean risus odio, pulvinar sit amet erat sed, ullamcorper condimentum purus.
+    </p>
+    <a class="post_Continue_read_link" href="/">Continue Reading</a>
+    <hr/>
+</div>
+
+<div align="center" th:fragment="footer_template">
+    <p>&copy; Private Blog </p>
+</div>
+
+</body>
+</html>

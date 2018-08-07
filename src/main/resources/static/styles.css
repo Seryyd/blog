@@ -1,27 +1,54 @@
+
+ 
+    @media (max-width: 350px) {
+        html {
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 450px) {
+        html {
+            font-size: 14px;
+        }
+    }
+   @media (min-width: 780px) {
+        html {
+            font-size: 16px;
+        }
+    }
+    @media (min-width: 858px) {
+        html {
+            font-size: 18px;
+        }
+    }
+
 	hr {
-	    display: block;
-	    height: 1px;
-	    border: 0;
-	    border-top: 1px solid #ccc;
-	    margin: 1em 0;
-	    padding: 0;
+        border: 0; 
+        height: 1px; 
+        background-image: linear-gradient(to right, rgba(128, 128, 128, 0), rgba(128, 128, 128, 0.75), rgba(128, 128, 128, 0));
+	    margin: 0.3em 0;
+
     }
 
     div.inline{
         display: inline-block;
-        margin: 1em;
+        #margin: 0.1em;
     }
 
     input.textField{
+        
+        font-size: 0.7em;
         -webkit-appearance: none;
         border-radius: 0;
         border: none;
         border-bottom: 1px solid #ddd;
         color: #aaa;
+        #min-width: var(--minFieldWidth);
+        #max-width: var(--maxFieldWidth);
         width: 150px;
+        margin-bottom: 0.7em;
         margin-left: 10px;
         margin-right: 10px;
-        margin-bottom: 0.7em;
         -webkit-transition: 0.5s;
        transition: 0.5s;
         
@@ -44,20 +71,63 @@
         margin-right: 10px;
     	background: none;
         border: 1px solid #aaa;
-        color: #aaa;
- 
-         font-family: Arial, Helvetica, sans-serif;
-       text-decoration: none;
-       display: inline-block;
-       font-size: 16px;
-  
-      cursor: pointer;
+        color: #aaa; 
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.8em;
+        cursor: pointer;
     }
 
     h3.pageTitle{
         margin-top: 0px;
-        margin-bottom: 0px;
-        font-size: 72px;
+        margin-bottom: 0.1em;
+        font-size: 3.5em;
         font-style: italic;
         font-family: Arial, Helvetica, sans-serif;
+    }
+
+    div.post_block{
+        margin-left: 12.5%;
+        width: 75%;
+
+    }
+
+    h5.post_title{
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        text-align: left;
+            
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2em;
+    }
+    p.post_paragraph{
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a.post_Continue_read_link{
+
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+        color: #444;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:active {
+        text-decoration: underline;
     }

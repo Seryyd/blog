@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=0.5, user-scalable=yes,  minimal-ui">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-    <div th:insert="header :: header_template"></div>
+    <div th:insert="fragments :: header_template"></div>
     <hr/>
-    <p>
-        Hello World!
-    </p>
+
+    <div th:insert="fragments :: post_template"></div>
+    <div th:insert="fragments :: post_template"></div>
+    <div th:insert="fragments :: post_template"></div>
+    <div th:insert="fragments :: post_template"></div>
+    <div th:insert="fragments :: post_template"></div>
+
+
 
     <hr/>
-    <div th:insert="footer :: footer_template"></div>
+    <div th:insert="fragments :: footer_template"></div>
 </body>
 </html>
