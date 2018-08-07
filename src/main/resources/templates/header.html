@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <div align="center" th:fragment="header_template">
+        <div class="inline">
+            <h3 class="pageTitle">Blog page title</h3>
+        </div>
+        <br>
+
+        <div class="inline">
+            <form id="loginForm">
+                <input class="textField" type="text" name="username" placeholder="username" >
+                <input class="textField" type="password" name="password" placeholder="password" >
+                <br>
+
+            </form>
+            <button class="buttoon" >Sign In</button><!--type="submit" form="loginForm" value="Submit"-->
+            <button class="buttoon" >Register</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
+    <div th:insert="header :: header_template"></div>
+    <hr/>
     <p>
         Hello World!
     </p>
+
+    <hr/>
+    <div th:insert="footer :: footer_template"></div>
 </body>
 </html>

@@ -1,0 +1,63 @@
+	hr {
+	    display: block;
+	    height: 1px;
+	    border: 0;
+	    border-top: 1px solid #ccc;
+	    margin: 1em 0;
+	    padding: 0;
+    }
+
+    div.inline{
+        display: inline-block;
+        margin: 1em;
+    }
+
+    input.textField{
+        -webkit-appearance: none;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        color: #aaa;
+        width: 150px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 0.7em;
+        -webkit-transition: 0.5s;
+       transition: 0.5s;
+        
+    }
+    input.textField:focus {
+        border-bottom: 1px solid #222;
+        color: #222;
+    }
+    input.textField:hover {
+        border-bottom: 1px solid #999;
+        color: #666;
+    }
+
+    button {
+        -webkit-appearance: none;
+        border-radius: 10px;
+        width: 150px;
+        height: 1.5em;
+        margin-left: 10px;
+        margin-right: 10px;
+    	background: none;
+        border: 1px solid #aaa;
+        color: #aaa;
+ 
+         font-family: Arial, Helvetica, sans-serif;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 16px;
+  
+      cursor: pointer;
+    }
+
+    h3.pageTitle{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 72px;
+        font-style: italic;
+        font-family: Arial, Helvetica, sans-serif;
+    }
