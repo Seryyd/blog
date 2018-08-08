@@ -4,11 +4,13 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=0.5, user-scalable=yes,  minimal-ui">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,800&amp;subset=cyrillic" rel="stylesheet">
 </head>
 <body>
+    <!-- Inserting header template -->
     <div th:insert="fragments :: header_template"></div>
-    <hr/>
 
+    <!-- TODO Thymeleaf logic for isnertin in loop, for amx 5 times -->
     <div th:insert="fragments :: post_template"></div>
     <div th:insert="fragments :: post_template"></div>
     <div th:insert="fragments :: post_template"></div>
@@ -16,6 +18,13 @@
     <div th:insert="fragments :: post_template"></div>
 
 
+    <div class="center_section">
+        <!-- TODO implement thymeleaf logic to display only relative buttons for page switching
+        TODO add page numberin the middle-->
+        <button class="previous_page" type="submit" formaction="/previousPage">Previous</button><!--type="submit" form="loginForm" value="Submit"-->
+        <button class="next_page" type="submit" formaction="/nextPage">Next</button>
+    </div>
+    <br>
 
     <hr/>
     <div th:insert="fragments :: footer_template"></div>

@@ -1,10 +1,12 @@
-package com.sergejs.blog;
+package com.sergejs.blog.Application;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ApplicationController {
+
+    private int currentPage = 0;
 
     @GetMapping("/")
     public String index(){
