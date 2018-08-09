@@ -25,18 +25,18 @@
 </div>
 
 <!--    POST FRAGMENT   -->
-<div  class="center_section" align="center" th:fragment="post_template">
+<div   align="center" th:fragment="post_template">
     <hr/>
     <div class="post_header">
         <h5 class="post_title" th:text="${title}"></h5>
         <span class="timestamp" th:text="${timestamp}"></span>
     </div>
     <p class="post_paragraph" align="center" th:utext="${content}"></p>
-    <a class="post_Continue_read_link" th:href="@{/post(id=${postId})}">Continue Reading</a>
 </div>
 
 <!--    FOOTER FRAGMENT   -->
 <div align="center" th:fragment="footer_template">
+    <hr/>
     <p>&copy; Private Blog </p>
 </div>
 

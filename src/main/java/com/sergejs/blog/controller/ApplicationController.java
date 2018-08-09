@@ -57,16 +57,21 @@ public class ApplicationController {
         }else{
             model.addAttribute("next", "true");
             model.addAttribute("previous", "true");
-
-
         }
         int nextPageNum = currentPage + 1;
         int prevPageNum = currentPage -1;
         model.addAttribute("next_page", String.valueOf(nextPageNum));
         model.addAttribute("previous_page", String.valueOf(prevPageNum));
         model.addAttribute("postList", postsToShow);
-
         return "main";
+    }
+
+    @GetMapping("/post")
+    public String readPost(@RequestParam(value = "id", required = true) String id, Model model){
+        Post post = repository.findOne(id);
+        model.addAttribute("post", post);
+        model.addAttribute("page", String.valueOf(currentPage));
+        return "post";
     }
 
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=0.5, user-scalable=yes,  minimal-ui">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,800&amp;subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+    <!-- Inserting header template -->
+    <div th:insert="fragments :: header_template"></div>
+
+    <div class="center_section">
+        <div th:object="${post}">
+            <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getLongText()}, postId=${post.getId()}"></div>
+        </div>
+
+        <div class="center_section">
+
+            <a id="button_back" class="button" th:href="@{/(page=${page})}" >Back</a>
+        </div>
+        <br>
+        <div th:insert="fragments :: footer_template"></div>
+    </div>
+</body>
+</html>

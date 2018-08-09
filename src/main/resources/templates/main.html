@@ -10,14 +10,16 @@
     <!-- Inserting header template -->
     <div th:insert="fragments :: header_template"></div>
 
-    <div th:object="${postList}">
 
-        <div th:each=" post : ${postList}">
-            <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getShortText()}, postId=${post.getId()}"></div>
-        </div>
-    </div>
 
     <div class="center_section">
+        <div th:object="${postList}">
+
+            <div th:each=" post : ${postList}">
+                <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getShortText()}"></div>
+                <a  align="center" class="post_Continue_read_link" th:href="@{/post(id=${post.getId()})}">Continue Reading</a>
+            </div>
+        </div>
         <!-- TODO implement thymeleaf logic to display only relative buttons for page switching
         TODO add page numberin the middle-->
         <!--
@@ -38,10 +40,10 @@
             <button th:unless="${next == 'false'}" class="next_page" type="submit" >Next</button>
         </form>
         -->
-    </div>
-    <br>
 
-    <hr/>
-    <div th:insert="fragments :: footer_template"></div>
+        <br>
+
+        <div th:insert="fragments :: footer_template"></div>
+    </div>
 </body>
 </html>
