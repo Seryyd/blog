@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
@@ -58,21 +57,16 @@ public class ApplicationController {
         }else{
             model.addAttribute("next", "true");
             model.addAttribute("previous", "true");
+
+
         }
+        int nextPageNum = currentPage + 1;
+        int prevPageNum = currentPage -1;
+        model.addAttribute("next_page", String.valueOf(nextPageNum));
+        model.addAttribute("previous_page", String.valueOf(prevPageNum));
         model.addAttribute("postList", postsToShow);
 
         return "main";
     }
 
-    @PostMapping("/nextPage")
-    public String nextPage(){
-        currentPage++;
-        return "redirect:/?page=" + currentPage;
-    }
-
-    @PostMapping("/previousPage")
-    public String previousPage(){
-        currentPage--;
-        return "redirect:/?page=" + currentPage;
-    }
 }

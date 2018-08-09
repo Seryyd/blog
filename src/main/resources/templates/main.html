@@ -13,19 +13,31 @@
     <div th:object="${postList}">
 
         <div th:each=" post : ${postList}">
-            <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getShortText()}"></div>
+            <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getShortText()}, postId=${post.getId()}"></div>
         </div>
     </div>
 
     <div class="center_section">
         <!-- TODO implement thymeleaf logic to display only relative buttons for page switching
         TODO add page numberin the middle-->
+        <!--
         <form action="/previousPage" method="post">
-            <button  th:unless="${previous == 'false'}" class="previous_page" type="submit">Previous</button><!--type="submit" form="loginForm" value="Submit"-->
+            <button  th:unless="${previous == 'false'}" class="previous_page" type="submit">Previous</button>
         </form>
+        -->
+        <a id="button_previous" class="button" th:unless="${previous == 'false'}" th:href="@{/(page=${previous_page})}" >Previous</a>
+        <a id="button_next" class="button"  th:unless="${next == 'false'}" th:href="@{/(page=${next_page})}" >Next</a>
+
+        <!--
+
+
+
+
+
         <form action="/nextPage" method="post">
             <button th:unless="${next == 'false'}" class="next_page" type="submit" >Next</button>
         </form>
+        -->
     </div>
     <br>
 

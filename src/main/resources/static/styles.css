@@ -60,8 +60,9 @@
         color: #666;
     }
 
-    button {
+    .button {
         -webkit-appearance: none;
+        text-align: center;
         border-radius: 10px;
         width: 150px;
         height: 1.5em;
@@ -79,17 +80,17 @@
         transition: 0.5s;
     }
     
-    button:hover{
+    .button:hover{
         border: 1px solid #444;
         color: #444;
     }
 
-    button.next_page{
+    #button_next{
         width: 7em;
         float: right;
     }
 
-    button.previous_page{
+    #button_previous{
         width: 7em;
         float: left;
     }

@@ -19,8 +19,8 @@
 
 
         </form>
-        <button class="buttoon" >Sign In</button><!--type="submit" form="loginForm" value="Submit"-->
-        <button class="buttoon" >Register</button>
+        <button class="button" >Sign In</button><!--type="submit" form="loginForm" value="Submit"-->
+        <button class="button" >Register</button>
     </div>
 </div>
 
@@ -32,7 +32,7 @@
         <span class="timestamp" th:text="${timestamp}"></span>
     </div>
     <p class="post_paragraph" align="center" th:utext="${content}"></p>
-    <a class="post_Continue_read_link" href="/">Continue Reading</a>
+    <a class="post_Continue_read_link" th:href="@{/post(id=${postId})}">Continue Reading</a>
 </div>
 
 <!--    FOOTER FRAGMENT   -->
