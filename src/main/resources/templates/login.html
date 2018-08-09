@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Log-in</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,800&amp;subset=cyrillic" rel="stylesheet">
+</head>
+
+<body>
+
+<div align="center">
+    <form method="post" action="/login">
+        <p>Login:</p> <input class="textField" type="text" name="username" placeholder="login">
+        <p>Password:</p> <input class="textField" type="password" name="password" placeholder="password">
+        <br>
+        <input class="button" type="submit" value="Submit">
+    </form>
+    <br>
+    <p><font color="red"><span th:utext="${msg}"></span></font></p>
+</div>
+</body>
+</html>

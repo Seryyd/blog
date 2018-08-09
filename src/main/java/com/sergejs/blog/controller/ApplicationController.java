@@ -10,9 +10,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -72,6 +74,32 @@ public class ApplicationController {
         model.addAttribute("post", post);
         model.addAttribute("page", String.valueOf(currentPage));
         return "post";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, HttpServletRequest request){
+        String error = request.getParameter("error");
+        if (error != null) {
+            if (error.equals("noUser")) {
+                model.addAttribute("msg", "Wrong username or password");
+            } else if (error.equals("emptyField")) {
+                model.addAttribute("msg", "Please fill out all fields");
+            }
+        }
+        return "login";
+    }
+    @PostMapping("/login")
+    public String verify(@RequestParam(value = "username",required = true) String user,
+                         @RequestParam(value = "password",required = true) String password) {
+        if (!user.equals("") && !password.equals("")){
+            if (user.equals("admin") && password.equals("admin")) {
+                return "redirect:/admin/?name=" + user;
+            } else {
+                return "redirect:/login?error=noUser";
+            }
+        }else{
+            return "redirect:/login?error=emptyField";
+        }
     }
 
 }
