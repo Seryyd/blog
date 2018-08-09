@@ -10,19 +10,22 @@
     <!-- Inserting header template -->
     <div th:insert="fragments :: header_template"></div>
 
-    <!-- TODO Thymeleaf logic for isnertin in loop, for amx 5 times -->
-    <div th:insert="fragments :: post_template"></div>
-    <div th:insert="fragments :: post_template"></div>
-    <div th:insert="fragments :: post_template"></div>
-    <div th:insert="fragments :: post_template"></div>
-    <div th:insert="fragments :: post_template"></div>
+    <div th:object="${postList}">
 
+        <div th:each=" post : ${postList}">
+            <div th:insert="fragments :: post_template" th:with="title=${post.getTitle()}, timestamp=${post.getTimestamp()}, content=${post.getShortText()}"></div>
+        </div>
+    </div>
 
     <div class="center_section">
         <!-- TODO implement thymeleaf logic to display only relative buttons for page switching
         TODO add page numberin the middle-->
-        <button class="previous_page" type="submit" formaction="/previousPage">Previous</button><!--type="submit" form="loginForm" value="Submit"-->
-        <button class="next_page" type="submit" formaction="/nextPage">Next</button>
+        <form action="/previousPage" method="post">
+            <button  th:unless="${previous == 'false'}" class="previous_page" type="submit">Previous</button><!--type="submit" form="loginForm" value="Submit"-->
+        </form>
+        <form action="/nextPage" method="post">
+            <button th:unless="${next == 'false'}" class="next_page" type="submit" >Next</button>
+        </form>
     </div>
     <br>
 

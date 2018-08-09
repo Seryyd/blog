@@ -47,7 +47,7 @@ public class Post {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimetamp(String timestamp) {
         this.timestamp = timestamp;
     }
 

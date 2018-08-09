@@ -28,4 +28,24 @@ values(5,'04.02.2018: 20:76', 'admin','Title5',
 'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna.',
 'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna. Proin convallis ante nec augue finibus, sed dictum felis sagittis. Curabitur ut risus elementum, vestibulum dolor sit amet, auctor orci. Mauris nunc nulla, rhoncus ac lacus sed, auctor auctor nunc. Suspendisse facilisis est ac egestas bibendum. Cras bibendum gravida tristique. Donec tempor justo quis nunc condimentum, non pellentesque justo sagittis. Praesent placerat sed elit nec eleifend. Donec nec scelerisque odio. Duis porta non velit et tincidunt. Maecenas tempor felis blandit, gravida risus at, tincidunt nisi. In pellentesque consectetur justo. Vivamus vulputate feugiat leo ac pretium.');
 
+insert into posts
+
+values(6,'04.02.2018: 20:76', 'admin','Title6',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna.',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna. Proin convallis ante nec augue finibus, sed dictum felis sagittis. Curabitur ut risus elementum, vestibulum dolor sit amet, auctor orci. Mauris nunc nulla, rhoncus ac lacus sed, auctor auctor nunc. Suspendisse facilisis est ac egestas bibendum. Cras bibendum gravida tristique. Donec tempor justo quis nunc condimentum, non pellentesque justo sagittis. Praesent placerat sed elit nec eleifend. Donec nec scelerisque odio. Duis porta non velit et tincidunt. Maecenas tempor felis blandit, gravida risus at, tincidunt nisi. In pellentesque consectetur justo. Vivamus vulputate feugiat leo ac pretium.');
+
+insert into posts
+
+values(7,'04.02.2018: 20:76', 'admin','Title7',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna.',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna. Proin convallis ante nec augue finibus, sed dictum felis sagittis. Curabitur ut risus elementum, vestibulum dolor sit amet, auctor orci. Mauris nunc nulla, rhoncus ac lacus sed, auctor auctor nunc. Suspendisse facilisis est ac egestas bibendum. Cras bibendum gravida tristique. Donec tempor justo quis nunc condimentum, non pellentesque justo sagittis. Praesent placerat sed elit nec eleifend. Donec nec scelerisque odio. Duis porta non velit et tincidunt. Maecenas tempor felis blandit, gravida risus at, tincidunt nisi. In pellentesque consectetur justo. Vivamus vulputate feugiat leo ac pretium.');
+
+
+insert into posts
+
+values(8,'04.02.2018: 20:76', 'admin','Title8',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna.',
+'Cras scelerisque, nulla non posuere pretium, eros odio molestie enim, ac porta augue ante eu quam. Integer et tincidunt magna. Proin convallis ante nec augue finibus, sed dictum felis sagittis. Curabitur ut risus elementum, vestibulum dolor sit amet, auctor orci. Mauris nunc nulla, rhoncus ac lacus sed, auctor auctor nunc. Suspendisse facilisis est ac egestas bibendum. Cras bibendum gravida tristique. Donec tempor justo quis nunc condimentum, non pellentesque justo sagittis. Praesent placerat sed elit nec eleifend. Donec nec scelerisque odio. Duis porta non velit et tincidunt. Maecenas tempor felis blandit, gravida risus at, tincidunt nisi. In pellentesque consectetur justo. Vivamus vulputate feugiat leo ac pretium.');
+
+
 

@@ -10,26 +10,69 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Controller
 public class ApplicationController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private int currentPage = 0;
+    private static int currentPage = 0;
     private JdbcTemplate jdbcTemplate;
-    private int postCountInRepository;
+    private static List<Post> posts;
+    private static int postCountInRepository;
+    private static final int POSTPERPAGE = 3;
 
     @Autowired
     private PostRepository repository = new PostRepositoryImpl(jdbcTemplate);
 
+    @PostConstruct
+    public void init(){
+        posts = repository.findAll();
+        postCountInRepository = posts.size();
+    }
 
     @GetMapping("/")
-    public String index(Model model){
-        List<Post> posts = repository.findAll();
-        postCountInRepository = posts.size();
+    public String index(@RequestParam(value = "page", required = false, defaultValue = "0") String page, Model model){
+        currentPage = Integer.parseInt(page);
+        List<Post> postsToShow;
+        logger.info("page number to display: " + currentPage);
+
+        if (currentPage < postCountInRepository / POSTPERPAGE){
+            logger.info("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + ((currentPage * POSTPERPAGE) +POSTPERPAGE));
+            postsToShow = posts.subList(currentPage * POSTPERPAGE, (currentPage * POSTPERPAGE) +POSTPERPAGE);
+        }else{
+            logger.info("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + posts.size());
+            postsToShow = posts.subList(currentPage * POSTPERPAGE, posts.size());
+        }
+
+        if(currentPage == 0){
+            model.addAttribute("previous", "false");
+            model.addAttribute("next", "true");
+        }else if(currentPage == postCountInRepository / POSTPERPAGE){
+            model.addAttribute("next", "false");
+            model.addAttribute("previous", "true");
+        }else{
+            model.addAttribute("next", "true");
+            model.addAttribute("previous", "true");
+        }
+        model.addAttribute("postList", postsToShow);
 
         return "main";
+    }
+
+    @PostMapping("/nextPage")
+    public String nextPage(){
+        currentPage++;
+        return "redirect:/?page=" + currentPage;
+    }
+
+    @PostMapping("/previousPage")
+    public String previousPage(){
+        currentPage--;
+        return "redirect:/?page=" + currentPage;
     }
 }
