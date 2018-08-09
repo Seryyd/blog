@@ -1,11 +1,8 @@
 package com.sergejs.blog.entity;
 
-import org.springframework.context.annotation.Bean;
-
-
 public class Post {
 
-    private int id;
+    private String id;
     private String timestamp;
     private String authorId;
     private String title;
@@ -15,8 +12,17 @@ public class Post {
     public Post(){
 
     }
-    public Post(int id, String timestamp, String authorId, String title, String shortText, String longText) {
+    public Post(String id, String timestamp, String authorId, String title, String shortText, String longText) {
         this.id = id;
+        this.timestamp = timestamp;
+        this.authorId = authorId;
+        this.title = title;
+        this.shortText = shortText;
+        this.longText = longText;
+    }
+
+    public Post(String timestamp, String authorId, String title, String shortText, String longText) {
+        //this.id = id;
         this.timestamp = timestamp;
         this.authorId = authorId;
         this.title = title;
@@ -26,14 +32,14 @@ public class Post {
 
     @Override
     public String toString(){
-        return String.format("Post[id=%d, timestampt=%s, author=%s, title=%s", id, timestamp, authorId, title);
+        return String.format("Post[id=%s, timestampt=%s, author=%s, title=%s", id, timestamp, authorId, title);
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
