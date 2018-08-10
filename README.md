@@ -9,3 +9,12 @@ Task - Create private blog.
 -You should be able to login to blog.</br>
 -Add new posts, remove posts, update posts, show posts sorted by date for example.</br>
 -For UI can be used Thymeleaf.</br>
+<hr>
+At the time: Aug. 10th missing features are:</br>
+-Basic Auth.</br>
+-sorting frontend part</br>
+<hr>
+PS. to "log-in"
+user: admin
+password: admin
+ 
