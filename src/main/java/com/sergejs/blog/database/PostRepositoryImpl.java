@@ -66,4 +66,6 @@ public final class PostRepositoryImpl implements PostRepository {
         return jdbcTemplate.update("delete from posts where id = ?", id );
     }
 
+
+
 }

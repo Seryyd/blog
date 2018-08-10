@@ -22,5 +22,6 @@ public interface PostRepository {
     Post save(Post person);
 
     int delete(String id);
+
 }
 
