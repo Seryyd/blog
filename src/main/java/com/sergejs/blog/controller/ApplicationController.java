@@ -3,6 +3,8 @@ package com.sergejs.blog.controller;
 import com.sergejs.blog.database.PostRepository;
 import com.sergejs.blog.database.PostRepositoryImpl;
 import com.sergejs.blog.entity.Post;
+import com.sergejs.blog.utils.PostListDateComparator;
+import com.sergejs.blog.utils.PostListTitleComparator;
 import com.sergejs.blog.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,22 +18,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class ApplicationController {
 
-    static List<Post> posts;
+    static List<Post> posts = new ArrayList<Post>();
     private static int currentPage = 0;
     private JdbcTemplate jdbcTemplate;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static int postCountInRepository;
-    private static final int POSTPERPAGE = 3;
+    private static final int POSTPERPAGE = 5;
     @Autowired
     private final PostRepository repository = new PostRepositoryImpl(jdbcTemplate);
 
     @PostConstruct
     public void init(){
+        updatePostList();
+        postCountInRepository = posts.size();
+    }
+
+    public  void updatePostList(){
         posts = repository.findAll();
         postCountInRepository = posts.size();
     }
@@ -120,7 +129,28 @@ public class ApplicationController {
         return "edit";
     }
 
-    @PostMapping("/submitEdit")
+    @GetMapping("/delete")
+    public String deletePost(@RequestParam(value = "post_id")String id){
+        int changes = repository.delete(id);
+        logger.info("deleted " + changes + "posts with id:" + id);
+        updatePostList();
+        return "redirect:/admin/";
+    }
+    @GetMapping("/create")
+    public String writenewPost(){
+        return "create";
+    }
+    @PostMapping("/create")
+    public String addNewPost(@RequestParam(value = "title") String title,
+                             @RequestParam(value = "content") String content,
+                             @RequestParam(value = "description") String description){
+        Post newPost = new Post(Utils.getTimeStamp(), "admin", title, description, content);
+        repository.save(newPost);
+        updatePostList();
+        return "redirect:/admin/";
+    }
+
+    @PostMapping("/edit")
     public String saveEdit(@RequestParam(value = "title") String title,
                            @RequestParam(value = "content") String content,
                            @RequestParam(value = "description") String description,
@@ -129,7 +159,23 @@ public class ApplicationController {
         logger.info(editedPost.toString());
         Post a = repository.save(editedPost);
         logger.info(a.toString());
+        updatePostList();
         return "redirect:/admin/";
+    }
+
+    @GetMapping("/sort")
+    public String sort(@RequestParam(value = "field")String sortField){
+        logger.info("before sort: " + posts.toString());
+        if (sortField.equals("date")) {
+            logger.info("sorting by date");
+            Collections.sort(posts, new PostListDateComparator());
+        }else if (sortField.equals("title")){
+            logger.info("sorting by title");
+            Collections.sort(posts, new PostListTitleComparator());
+        }
+        logger.info("after sort: " + posts.toString());
+        updatePostList();
+        return "redirect:/";
     }
 
 }

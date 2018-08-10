@@ -45,16 +45,16 @@ public final class PostRepositoryImpl implements PostRepository {
             String postID = UUID.randomUUID().toString();
             post.setId(postID);
             LOGGER.info("saving new Post to DB with generated id=" + postID);
-            assert jdbcTemplate.update("insert into posts values (?, ?, ?, ?, ?, ?)",
+             jdbcTemplate.update("insert into posts values (?, ?, ?, ?, ?, ?)",
                     post.getId(), post.getTimestamp(),
                     post.getAuthorId(),post.getTitle(),
-                    post.getShortText(), post.getLongText()) > 0;
+                    post.getShortText(), post.getLongText());
         }else{
             LOGGER.info("updating Post in DB with id=" + post.getId());
-            assert jdbcTemplate.update("update posts set time_stamp=?2, author_id=?3, title=?4, shortText=?5, longText=?6 where id=?1 ",
+             jdbcTemplate.update("update posts set time_stamp=?2, author_id=?3, title=?4, shortText=?5, longText=?6 where id=?1 ",
                     post.getId(), post.getTimestamp(),
                     post.getAuthorId(),post.getTitle(),
-                    post.getShortText(), post.getLongText()) > 0;
+                    post.getShortText(), post.getLongText());
         }
         return findOne(post.getId());
     }

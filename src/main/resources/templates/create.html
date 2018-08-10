@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new post</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,800&amp;subset=cyrillic"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="center_section">
+    <form id="editForm" class="editPostForm" method="post" action="/create">
+        <p>Write new post here</p>
+        <hr>
+        <p>Enter title of the post:</p>
+        <input id="titleTextField" type="text" name="title">
+        <p>Enter content of the post:</p>
+        <textarea id="content" name="content" rows="5" cols="100"
+                  placeholder="Content of the blog">
+            </textarea>
+        <p>Write short blog description to be displayed on home page(limit 300chars):</p>
+        <textarea id="description" name="description" rows="3" cols="100"
+                  placeholder="Description of the blog" maxlength="300">
+            </textarea>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>
