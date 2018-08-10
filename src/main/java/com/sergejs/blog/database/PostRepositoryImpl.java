@@ -62,7 +62,7 @@ public final class PostRepositoryImpl implements PostRepository {
 
     @Override
     public int delete(String id) {
-        LOGGER.info("delting Post in DB with id=" + id);
+        LOGGER.info("Deleting Post in DB with id=" + id);
         return jdbcTemplate.update("delete from posts where id = ?", id );
     }
 

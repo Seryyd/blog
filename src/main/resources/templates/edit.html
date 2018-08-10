@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editing</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,800&amp;subset=cyrillic"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="center_section">
+    <form id="editForm" class="editPostForm" method="post" action="/submitEdit">
+        <p>Editin post with ID:<span name="id" th:text="${id}"></span></p>
+        <hr>
+        <p>Enter title of the blog:</p>
+        <input id="titleTextField" type="text" name="title" th:value="${title}">
+        <p>Enter content of the blog:</p>
+        <textarea id="content" th:text="${content}" name="content" rows="5" cols="100"
+                  placeholder="Content of the blog">
+            </textarea>
+        <p>Write short blog description to be displayed on home page:</p>
+        <textarea id="description" th:text="${description}" name="description" rows="3" cols="100"
+                  placeholder="Description of the blog" maxlength="300">
+            </textarea>
+        <br>
+        <input type="text" style="display:none" th:value="${id}" name="id">
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>

@@ -15,12 +15,10 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 public class TestPostRepository {
 
     private static EmbeddedDatabase embeddedDatabase;
-    private static JdbcTemplate jdbcTemplate;
     private static PostRepository postRepository;
 
     private static Post testingPost;
     private static String testPostID = "";
-    private String postToDelete = "TestPostToBeDelted";
 
     @BeforeClass
     public static void  setUp() {
@@ -28,7 +26,7 @@ public class TestPostRepository {
                 .addDefaultScripts()
                 .setType(EmbeddedDatabaseType.H2)
                 .build();
-        jdbcTemplate = new JdbcTemplate(embeddedDatabase);
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(embeddedDatabase);
         postRepository = new PostRepositoryImpl(jdbcTemplate);
 
 
@@ -83,6 +81,7 @@ public class TestPostRepository {
     public void test05Update(){
 
         Post post = postRepository.findOne(testPostID);
+        String postToDelete = "TestPostToBeDeleted";
         post.setTitle(postToDelete);
 
         post = postRepository.save(post);

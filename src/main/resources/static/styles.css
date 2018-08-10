@@ -99,8 +99,7 @@
         margin-top: 0px;
         margin-bottom: 0.1em;
         font-size: 3.5em;
-        #font-style: italic;
-        #font-family: Arial, Helvetica, sans-serif;
+
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
     }
@@ -172,8 +171,13 @@
         font-style: italic;
         color: #444;
     }
+    a.title{
+        text-decoration: none;
+        color: #111;
+    }
+
     #button_back{
-                display: block;
+        display: block;
         margin-left: auto;
         margin-right: auto;
         width: 10em;
@@ -183,11 +187,84 @@
     a:visited {
         text-decoration: none;
     }
+    
+    a.title:hover {
+        text-decoration: none;
+    }
 
     a:hover {
         text-decoration: underline;
     }
 
+
+
     a:active {
         text-decoration: underline;
     }
+    
+    #userPostTable{
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.8em;
+      border-collapse: collapse;
+      width: 95%;
+        
+    }
+
+    #userPostTable td, #userPostTable th{
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    #userPostTable tr:nth-child(even){
+        background-color: #f2f2f2;
+        
+    }
+
+    #userPostTable tr:hover {
+        background-color: #ddd;
+    }
+    
+    #userPostTable a.button{
+        display: block;
+        padding-top: 0.1em;
+        margin-bottom: 0.2em;
+        
+        width: 5em;
+    }
+
+    #userPostTable a.text:link{
+        text-decoration: none;
+    }
+
+    #userPostTable a.text{
+
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        font-size: 0.8.em;
+        color: #444;
+    }
+    #userPostTable a.text:visited{
+        text-decoration: none;
+    }
+
+    #userPostTable a.text:hover {
+        text-decoration: underline;
+    }
+
+    #titleTextField{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300; 
+        width: auto;
+    }
+    
+    #editPostForm textarea{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300; 
+        margin-right: 1px;
+        width: 100%; 
+       -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box; 
+        box-sizing: border-box;
+    }
+

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Admin panel</title>
@@ -9,8 +9,46 @@
 <body>
 
     <div align="center">
-        <p>Welcome <span th:text="' ' + ${name} + '.'"></span></p>
-        <hr>
+        <div>
+            <p>Welcome <span th:text="' ' + ${name} + '.'"></span></p>
+            <hr>
+        </div>
+        <div>
+            <p>TODO user controls goes here, change password etc...</p>
+            <hr>
+        </div>
+        <div>
+
+            <table id="userPostTable" th:object="${postList}">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Preview</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="post : ${postList}">
+                    <td th:text="${post.getTitle()}"></td>
+                    <td th:text="${post.getTimestamp()}"></td>
+                    <td>
+                        <a class="text " th:href="@{/post(id=${post.getId()})}"><span
+                                th:text="${post.getShortText()}"></span> </a>
+                    </td>
+                    <td>
+                        <a class="button" th:href="@{/edit/(post_id=${post.getId()})}">edit</a>
+                        <a class="button" th:href="@{/delete/(post_id=${post.getId()})}">delete</a>
+                    </td>
+                </tr>
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
     </div>
 
 </body>

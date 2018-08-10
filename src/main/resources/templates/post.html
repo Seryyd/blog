@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=0.5, user-scalable=yes,  minimal-ui">
     <title>Title</title>
@@ -17,7 +17,10 @@
 
         <div class="center_section">
 
-            <a id="button_back" class="button" th:href="@{/(page=${page})}" >Back</a>
+            <form>
+                <input id="button_back" class="button" type="button" value="Go back!" onclick="history.back()">
+            </form>
+            <!--<a id="button_back" class="button" th:href="@{/(page=${page})}" >Back</a>-->
         </div>
         <br>
         <div th:insert="fragments :: footer_template"></div>

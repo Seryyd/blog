@@ -3,6 +3,7 @@ package com.sergejs.blog.controller;
 import com.sergejs.blog.database.PostRepository;
 import com.sergejs.blog.database.PostRepositoryImpl;
 import com.sergejs.blog.entity.Post;
+import com.sergejs.blog.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,14 @@ import java.util.List;
 @Controller
 public class ApplicationController {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    static List<Post> posts;
     private static int currentPage = 0;
     private JdbcTemplate jdbcTemplate;
-    private static List<Post> posts;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static int postCountInRepository;
     private static final int POSTPERPAGE = 3;
-
     @Autowired
-    private PostRepository repository = new PostRepositoryImpl(jdbcTemplate);
+    private final PostRepository repository = new PostRepositoryImpl(jdbcTemplate);
 
     @PostConstruct
     public void init(){
@@ -69,7 +69,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/post")
-    public String readPost(@RequestParam(value = "id", required = true) String id, Model model){
+    public String readPost(@RequestParam(value = "id") String id, Model model) {
         Post post = repository.findOne(id);
         model.addAttribute("post", post);
         model.addAttribute("page", String.valueOf(currentPage));
@@ -89,8 +89,8 @@ public class ApplicationController {
         return "login";
     }
     @PostMapping("/login")
-    public String verify(@RequestParam(value = "username",required = true) String user,
-                         @RequestParam(value = "password",required = true) String password) {
+    public String verify(@RequestParam(value = "username") String user,
+                         @RequestParam(value = "password") String password) {
         if (!user.equals("") && !password.equals("")){
             if (user.equals("admin") && password.equals("admin")) {
                 return "redirect:/admin/?name=" + user;
@@ -100,6 +100,36 @@ public class ApplicationController {
         }else{
             return "redirect:/login?error=emptyField";
         }
+    }
+
+    @GetMapping("/admin/")
+    public String admin(HttpServletRequest request, Model model) {
+        logger.info("post size: " + posts.size());
+        model.addAttribute("name", request.getParameter("name"));
+        model.addAttribute("postList", posts);
+        return "adminPanel";
+    }
+
+    @GetMapping("/edit")
+    public String edit(@RequestParam(value = "post_id") String id, Model model) {
+        Post post = repository.findOne(id);
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("description", post.getShortText());
+        model.addAttribute("content", post.getLongText());
+        model.addAttribute("id", id);
+        return "edit";
+    }
+
+    @PostMapping("/submitEdit")
+    public String saveEdit(@RequestParam(value = "title") String title,
+                           @RequestParam(value = "content") String content,
+                           @RequestParam(value = "description") String description,
+                           @RequestParam(value = "id") String id) {
+        Post editedPost = new Post(id, Utils.getTimeStamp(), "admin", title, description, content);
+        logger.info(editedPost.toString());
+        Post a = repository.save(editedPost);
+        logger.info(a.toString());
+        return "redirect:/admin/";
     }
 
 }
