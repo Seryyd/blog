@@ -31,16 +31,16 @@ public class ApplicationController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static int postCountInRepository;
     private static final int POSTPERPAGE = 5;
+    private static String sortField = "";
     @Autowired
     private final PostRepository repository = new PostRepositoryImpl(jdbcTemplate);
 
     @PostConstruct
     public void init(){
         updatePostList();
-        postCountInRepository = posts.size();
     }
 
-    public  void updatePostList(){
+    void updatePostList(){
         posts = repository.findAll();
         postCountInRepository = posts.size();
     }
@@ -52,10 +52,10 @@ public class ApplicationController {
         logger.info("page number to display: " + currentPage);
 
         if (currentPage < postCountInRepository / POSTPERPAGE){
-            logger.info("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + ((currentPage * POSTPERPAGE) +POSTPERPAGE));
+            logger.debug("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + ((currentPage * POSTPERPAGE) +POSTPERPAGE));
             postsToShow = posts.subList(currentPage * POSTPERPAGE, (currentPage * POSTPERPAGE) +POSTPERPAGE);
         }else{
-            logger.info("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + posts.size());
+            logger.debug("getting sublist from: " + (currentPage * POSTPERPAGE) + " to " + posts.size());
             postsToShow = posts.subList(currentPage * POSTPERPAGE, posts.size());
         }
 
@@ -70,7 +70,7 @@ public class ApplicationController {
             model.addAttribute("previous", "true");
         }
         int nextPageNum = currentPage + 1;
-        int prevPageNum = currentPage -1;
+        int prevPageNum = currentPage - 1;
         model.addAttribute("next_page", String.valueOf(nextPageNum));
         model.addAttribute("previous_page", String.valueOf(prevPageNum));
         model.addAttribute("postList", postsToShow);

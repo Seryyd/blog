@@ -44,7 +44,7 @@ public class TestPostRepository {
     @Test
     public void test01FindAll() {
         Assert.assertNotNull(postRepository.findAll());
-        Assert.assertEquals(5, postRepository.findAll().size());
+        Assert.assertEquals(8, postRepository.findAll().size());
     }
 
     /*

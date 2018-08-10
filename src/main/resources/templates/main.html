@@ -10,7 +10,15 @@
     <!-- Inserting header template -->
     <div th:insert="fragments :: header_template"></div>
 
+
     <div class="center_section">
+        <div align="center" class="inline">
+            <a id="loginButton" class="button" href="/login">Login</a>
+        </div>
+        <div id="sortingButtons">
+            <a class="button" href="/sort?field=date">Sort by date</a>
+            <a class="button" href="/sort?field=title">Sort by Title</a>
+        </div>
         <div th:object="${postList}">
 
             <div th:each=" post : ${postList}">
